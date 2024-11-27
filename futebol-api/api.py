@@ -5,7 +5,13 @@ import json
 
 api = "https://api.football-data.org/v4"
 url = f"{api}/matches"
-headers = { 'X-Auth-Token': '24d761476ef14724a2593d62dfa91e57' }
+
+
+with open('../FutebolAPI-Bot/assets/token.txt', 'r') as arquivo: 
+    token = arquivo.read()
+
+
+headers = { 'X-Auth-Token': token}
 
 obj_api = requests.get(url, headers=headers)
 
