@@ -1,6 +1,5 @@
 import pandas as pd
 import requests
-from requests.auth import HTTPBasicAuth
 import json
 
 api = "https://api.football-data.org/v4"
