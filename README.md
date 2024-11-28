@@ -9,11 +9,11 @@
     <a href="https://restfulapi.net/"><img src="https://img.shields.io/badge/REST%20API-%2300A5E.svg?style=flat&logo=api&logoColor=white" alt="REST API"></a> 
 </div>
 
-## Descrição
+# Descrição
 
 Este projeto utiliza Python 3.11, um bot do Telegram e uma REST API para demonstrar funcionalidades incríveis.
 
-## Instalação
+# Instalação
 
 
 
