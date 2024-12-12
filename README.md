@@ -1,4 +1,4 @@
-![Imagem de capa](../FutebolAPI-Bot/assets/capa.png)
+![Imagem de capa](https://github.com/jeffersonrafael/FutebolAPI-Bot/blob/dev/assets/capa.png)
 
 
 <div align="center">
