@@ -2,7 +2,10 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CallbackQueryHandler, CommandHandler
 from time import sleep
 
-TOKEN = '7707442510:AAEpdauv3Q71T_kHS_3f6QqWv0IAO0ji7eI'
+caminho_telegram_token = "C:/Users/jeffe/OneDrive/Área de Trabalho/Organização/Ciência/Portifolio/FutebolAPI-Bot/assets/telegram_token.txt"
+
+with open(caminho_telegram_token, 'r') as arquivo: 
+    TOKEN = arquivo.read()
 
 handlers = {}
 texto_voltar = 'Voltar'
