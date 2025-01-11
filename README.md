@@ -1,4 +1,4 @@
-![Imagem de capa](https://github.com/jeffersonrafael/FutebolAPI-Bot/blob/dev/assets/capa.png)
+![Imagem de capa](/assets/capa.png)
 
 
 <div align="center">
@@ -10,12 +10,10 @@
 
 # Resumo
 
-Uma aplicação que integra uma _API_ de dados de futebol com um _Telegram bot_.
+Este projeto faz integração com 3 APIs. Duas APIs externas, uma para o sistema de pagamento e a outra para o recebimento dos dados de futebol. 
 
+Este produto irá oferecer aos usuários monitoramento **gratuito** sobre seus times e campeonatos preferidos. E oferecerá acesso à nossa **inteligência artificial que realiza previsões** dos eventos esportivos, a partir de uma mensalidade bastante acessível.
 
-## Descrição
-
-Este projeto utiliza Python 3.8.8, um bot do Telegram e uma REST API para demonstrar funcionalidades incríveis.
 
 ### Quais informações temos acesso via API?
 - Detalhes sobre a partida, como status, horário, ao vivo e etc...  
@@ -24,67 +22,69 @@ Este projeto utiliza Python 3.8.8, um bot do Telegram e uma REST API para demons
   - Quanto tempo tem o delay?
 
 
-## Instalação
+## Tecnologias
 
+**Linguagem de programação**
+> Python == 3.8.8
 
+**Bibliotecas**
+> Requests  
+> Python-Telegram-Bot
 
-
-## Workflow
-
-```mermaid
-flowchart TD;  
-    subgraph Sistema
-        id1[API] -- Arquivo .json --- id2{Telegram BOT};
-    end
-    
-    id2{Telegram BOT} -- OUTPUT --- id3[User];
-    id3[User] -- FEEDBACK --- id2{Telegram BOT}
-    
-    style id1 fill:#477739
-    style id2 fill:#477739
-```
-
-## Interação com o usuário
-
-
+## Arquitetura do projeto
 
 ```mermaid
-flowchart TD;  
-    subgraph 1º escolha do usuário
-        
-        id1(Premier League)
-
+graph TD
+    subgraph APIsExternas
+        api1[API FOOTBALL-DATA]
+        api2[API MERCADO PAGO]
+    end
+    subgraph Processamento
+        id1[(Database)]
+        id2[Modelo de AI]
+    end
+    subgraph Bot
+        bot[Bot Telegram]
     end
 
-    subgraph 2º escolha do usuário 
+    api1 --> id1
+    api2 --> id1
+    id1 --> APIsExternas
 
-        id1(Premier League) --> id2(Top goleadores)
-        id1(Premier League) --> id3(Classificação)
-        id1(Premier League) --> id4(head2head)
-        id1(Premier League) --> id5(Partidas)
-    end
+    id1 --> Bot
+    bot --> id1
 
-    subgraph 3º escolha do usuário
-        
-        id5(Partidas) --> id6(Partida em particula)
-        id4(head2head) --> id7(Jogador)
-        id3(Classificação) --> id7(Jogador)
-        id2(Top goleadores) --> id7(Jogador)
-        id6(Partida em particula) --> id7(Jogador)
-    end
+    id2 --> id1
+    id1 --> id2
+    id2 --> Bot
 
-
-    
 ```
 
-# Issues 
-Deve-se encontrar uma maneira de reduzir o numero de if's
+## Interação do bot com o usuário
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centralizar GIF</title>
+    <style>
+        .gif-container {
+            text-align: center;
+        }
+        .gif-container img {
+            width: 200px; /* Defina a largura desejada */
+            height: 435px; /* Defina a altura desejada */
+        }
+</style>
+</head>
+<body>
+    <div class="gif-container">
+        <img src="./assets/video_2024-12-14_13-45-32.gif" alt="Esse gif apresenta uma demonstração do conceito do Bot Telegram construído até agora.">
+    </div>
+</body>
+</html>
 
 
+# Licensa
 
-# Configurações
-
-[Link da API com as estatísticas de futebol com dados numa forma machine-readable.](https://www.football-data.org/)
-
-[Documentação com informações detalhadas sobre a API](https://www.football-data.org/documentation/quickstart)
-
+Attribution-NonCommercial 4.0 International

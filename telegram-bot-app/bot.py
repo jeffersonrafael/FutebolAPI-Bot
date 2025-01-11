@@ -10,7 +10,46 @@ with open(caminho_telegram_token, 'r') as arquivo:
 handlers = {}
 texto_voltar = 'Voltar'
 
+
 msg_pagamento = "Processando pagamento..."
+
+lista_partidas = [
+"\
+📅 Data da partida: 2024-12-14\n\
+🕔 Horário da partida: 9:30:00\n\
+⚽ Competição: Championship\n\
+⏳ Situação da partida: IN_PLAY\n\
+========================\n\n\
+Coventry City FC: 0\n🆚\n\
+🏆Hull City AFC: 1\n\
+========================\n\n\
+🙋‍♂️Arbitro: Bobby Madley\
+",
+
+"\
+📅 Data da partida: 2024-12-14\n\
+🕔 Horário da partida: 9:30:00\n\
+⚽ Competição: Championship\n\
+⏳ Situação da partida: IN_PLAY\n\
+========================\n\n\
+Bristol City FC: 0\n🆚\n\
+Queens Park Rangers FC: 0\n\
+========================\n\n\
+🙋‍♂️Arbitro: Lewis Smith\
+",
+
+"\
+📅 Data da partida: 2024-12-14\n\
+🕔 Horário da partida: 9:30:00\n\
+⚽ Competição: Championship\n\
+⏳ Situação da partida: IN_PLAY\n\
+========================\n\n\
+🏆Preston North End FC: 1\n🆚\n\
+Leeds United FC: 0\n\
+========================\n\n\
+🙋‍♂️Arbitro: John Busby\n\
+"
+]
 
 # Configurações da mensagem inicial
 msg_inicial = {
@@ -21,7 +60,7 @@ msg_inicial = {
         [InlineKeyboardButton("🇫🇷 League 1", callback_data="FL1"), InlineKeyboardButton("🇩🇪 Bundesliga", callback_data="BL1")],
         [InlineKeyboardButton("🇮🇹 Serie A", callback_data="SA"), InlineKeyboardButton("🇳🇱 Eredivise", callback_data="DED")],
         [InlineKeyboardButton("🇵🇹 Primeira Liga", callback_data="PPL"), InlineKeyboardButton("🇪🇦 La Liga", callback_data="PD")],
-        [InlineKeyboardButton("🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League", callback_data="PL"), InlineKeyboardButton("🏴󠁧󠁢󠁥󠁮󠁧󠁿 Champioship", callback_data="ELC")],
+        [InlineKeyboardButton("🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League", callback_data="PL"), InlineKeyboardButton("🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship", callback_data="ELC")],
         [InlineKeyboardButton("🌍 UEFA Champions League", callback_data="CL"), InlineKeyboardButton("🌍 Europa League", callback_data="EC")],
         [InlineKeyboardButton("🗺️ Copa do Mundo", callback_data="WC")]
     ],
@@ -31,7 +70,7 @@ msg_inicial = {
 \n\n 🏆 Classificação de ligas.\
 \n\n 🗂️ Pesquisa personalizada.\
 \n\n=======================\nPrepare-se para as principais ligas do futebol - Premier League, Serie A, La Liga, Bundesliga, Ligue 1, \
-Champions Leeague e outras.'
+Champions League e outras.'
 }
 
 
@@ -48,6 +87,7 @@ def handle_partida_hoje(update, context):
     # Receber conteudo da API
 
     keyboard = [
+        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
         [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -60,6 +100,7 @@ def handle_partida_hoje(update, context):
 @botao("in_live")
 def handle_in_live(update, context):
     keyboard = [
+        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
         [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -81,16 +122,32 @@ def handle_voltar(update, context):
 
 @botao("PAR")
 def handle_partida(update, context):
-    for partida in range(2):
-        keyboard = [
-            [InlineKeyboardButton("📊 Head2Head", callback_data="H2H")]
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-
+    for partida in lista_partidas:
         update.callback_query.message.reply_text(
-            f"Informações sobre a partida {partida+1}", reply_markup=reply_markup
+            text=partida
             )
         sleep(0.5)
+
+    # Botão do Head2Head
+    keyboard = [
+        [InlineKeyboardButton("📊 Head2Head", callback_data="H2H")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    update.callback_query.message.reply_text(text='📊 Veja as últimas partidas dessas equipes.',
+        reply_markup=reply_markup
+        )
+    sleep(0.8)
+
+    # Emoji de comemoração
+    update.callback_query.message.reply_text(text='🥳'
+    )
+    # sleep(0.5)
+
+    # CTA para a venda do produto
+    update.callback_query.message.reply_text(text='👉 Hoje é o dia da vitória!\n💸 Quer ter uma fonte de dinheiro rápido?'
+    )
+    sleep(0.6)
 
     keyboard = [
         [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
@@ -98,24 +155,18 @@ def handle_partida(update, context):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    update.callback_query.message.reply_text(text='Tenha acesso a relatórios profissionais e previsão de resultados feito\
+    update.callback_query.message.reply_text(text='💹 Tenha acesso a relatórios profissionais e previsão de resultados feito\
  pelo melhor algoritmo de inteligência artificial otimizado para o futebol no \n\n🔥Clube Black🔥.',
         reply_markup=reply_markup
         )
-    
-    # sleep(2)
 
-    # chat_id = update.message.chat_id
-    # # Substitua 'STICKER_FILE_ID' pelo ID do seu sticker animado
-    # sticker_file_id = 'CAACAgEAAxkBAAPGZ1hC75Tl6RhPYIK3yr61j6eWXL4AAkoDAAJv1xhE1FIWNP_ah4M2BA'
-    # context.bot.send_sticker(chat_id=chat_id, sticker=sticker_file_id)
 
 
 @botao("RANK")
 def handle_rank(update, context):
     keyboard = [
-        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")],
-        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")]
+        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
+        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -131,8 +182,8 @@ def handle_rank(update, context):
 @botao("TOP")
 def handle_top(update, context):
     keyboard = [
-        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")],
-        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")]
+        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
+        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -148,8 +199,8 @@ def handle_top(update, context):
 @botao("H2H")
 def handle_h2h(update, context):
     keyboard = [
-        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")],
-        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")]
+        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
+        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -200,8 +251,8 @@ def callback_handler(update, context):
     keyboard = [
         [InlineKeyboardButton("🏆 Classificação", callback_data="RANK"),  InlineKeyboardButton("🚀 Top goleadores", callback_data="TOP")],
         [InlineKeyboardButton("📊 Head2Head", callback_data="H2H"), InlineKeyboardButton("⚽ Partidas", callback_data="PAR")],
-        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")],
-        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")]
+        [InlineKeyboardButton("🔥Clube Black🔥", callback_data="VIP")],
+        [InlineKeyboardButton(f"🔝{texto_voltar}🔝", callback_data="BACK")]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -223,7 +274,7 @@ def start(update, context):
 def main():
     updater = Updater(TOKEN)
     updater.dispatcher.add_handler(CallbackQueryHandler(callback_handler))
-    updater.dispatcher.add_handler(CommandHandler("campeonatos", start))
+    updater.dispatcher.add_handler(CommandHandler("start", start))
     updater.start_polling()
     updater.idle()
 
