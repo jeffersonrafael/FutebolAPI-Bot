@@ -1,4 +1,8 @@
-![Imagem de capa](/assets/capa.png)
+# **Monitore resultados e estatísticas de futebol em tempo real no Telegram com Python**
+
+![Imagem de capa](https://github.com/jeffersonrafael/FutebolAPI-Bot/blob/main/assets/capa.png)
+
+
 
 
 <div align="center">
@@ -8,11 +12,20 @@
 </div>
 
 
+
 # Resumo
 
 Este projeto faz integração com 3 APIs. Duas APIs externas, uma para o sistema de pagamento e a outra para o recebimento dos dados de futebol. 
 
 Este produto irá oferecer aos usuários monitoramento **gratuito** sobre seus times e campeonatos preferidos. E oferecerá acesso à nossa **inteligência artificial que realiza previsões** dos eventos esportivos, a partir de uma mensalidade bastante acessível.
+
+<<<<<<< HEAD
+=======
+## Descrição
+
+
+Este projeto utiliza Python 3.8.8, um bot do Telegram e uma REST API para demonstrar funcionalidades incríveis.
+>>>>>>> 42303e479c189bf30a37110e5739f2943b3007b6
 
 
 ### Quais informações temos acesso via API?
@@ -22,7 +35,14 @@ Este produto irá oferecer aos usuários monitoramento **gratuito** sobre seus t
   - Quanto tempo tem o delay?
 
 
+<<<<<<< HEAD
 ## Tecnologias
+=======
+
+
+## Instalação
+
+>>>>>>> 42303e479c189bf30a37110e5739f2943b3007b6
 
 **Linguagem de programação**
 > Python == 3.8.8
