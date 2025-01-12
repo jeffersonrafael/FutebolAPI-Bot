@@ -19,14 +19,6 @@ Este projeto faz integração com 3 APIs. Duas APIs externas, uma para o sistema
 
 Este produto irá oferecer aos usuários monitoramento **gratuito** sobre seus times e campeonatos preferidos. E oferecerá acesso à nossa **inteligência artificial que realiza previsões** dos eventos esportivos, a partir de uma mensalidade bastante acessível.
 
-<<<<<<< HEAD
-=======
-## Descrição
-
-
-Este projeto utiliza Python 3.8.8, um bot do Telegram e uma REST API para demonstrar funcionalidades incríveis.
->>>>>>> 42303e479c189bf30a37110e5739f2943b3007b6
-
 
 ### Quais informações temos acesso via API?
 - Detalhes sobre a partida, como status, horário, ao vivo e etc...  
@@ -35,14 +27,8 @@ Este projeto utiliza Python 3.8.8, um bot do Telegram e uma REST API para demons
   - Quanto tempo tem o delay?
 
 
-<<<<<<< HEAD
+
 ## Tecnologias
-=======
-
-
-## Instalação
-
->>>>>>> 42303e479c189bf30a37110e5739f2943b3007b6
 
 **Linguagem de programação**
 > Python == 3.8.8
