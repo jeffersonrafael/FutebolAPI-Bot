@@ -70,21 +70,6 @@ graph TD
 ## Interação do bot com o usuário
 
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Centralizar GIF
-</title>
-<style>
-.gif-container {
-    text-align: center;
-}
-.gif-container img {
-    width: 200px; /* Defina a largura desejada */
-    height: 435px; /* Defina a altura desejada */
-}
-</style>
-</head>
 <body>
     <div class="gif-container">
         <img src="./assets/video_2024-12-14_13-45-32.gif" alt="Esse gif apresenta uma demonstração do conceito do Bot Telegram construído até agora.">
